@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+  <div style="color:#666;">
+    Вариант: <span th:text="${session.code}">CODE</span>
+    | LAST4: <span th:text="${session.last4}">0000</span>
+    | User: <span th:text="${session.username}">-</span>
+  </div>
+  <hr/>
+</div>
+</body>
+</html>
