@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Tasks</title>
+</head>
+<body>
+  <div th:replace="~{fragments/header :: header}"></div>
+
+  <h1>Tasks</h1>
+
+  <div th:if="${flash}" style="background:#e6ffed; padding:8px; border:1px solid #b7f5c2;">
+    <span th:text="${flash}">Создано</span>
+  </div>
+
+  <p>
+    <a href="/app/tasks/create">Создать</a>
+  </p>
+
+  <div th:if="${#lists.isEmpty(tasks)}">
+    <p>Список задач пуст.</p>
+  </div>
+
+  <table th:if="${!#lists.isEmpty(tasks)}" border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+      <th>id</th><th>title</th><th>description</th><th>createdAt</th><th>variant</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t : ${tasks}">
+      <td th:text="${t.id}">1</td>
+      <td th:text="${t.title}">title</td>
+      <td th:text="${t.description}">desc</td>
+      <td th:text="${t.createdAt}">time</td>
+      <td th:text="${t.variantCode}">0000</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <hr/>
+  <p>REST: <code th:text="'/api/' + ${last4} + '/tasks'"></code></p>
+</body>
+</html>
